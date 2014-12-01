@@ -161,8 +161,7 @@ public class MapServ extends HttpServlet {
         User us = new User();
         
         us.setCluster(CassandraHosts.getCluster());
-        java.util.UUID uuid;
-        
+        java.util.UUID uuid;        
         uuid = (UUID) request.getAttribute("mapid");
         String mapStuff = request.getParameter("mySavedModel");
         
@@ -172,9 +171,9 @@ public class MapServ extends HttpServlet {
         
         aMap.updateMap(returnId, mapStuff);
         request.setAttribute("mapdata", mapStuff);
-        //RequestDispatcher rd = request.getRequestDispatcher("/map.jsp");
-        //rd.forward(request, response);
-        response.sendRedirect("/mapStax/map.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/map.jsp");
+        rd.forward(request, response);
+        //response.sendRedirect("/mapStax/map.jsp");
     }
 
     private void error(String mess, HttpServletResponse response) throws ServletException, IOException {
