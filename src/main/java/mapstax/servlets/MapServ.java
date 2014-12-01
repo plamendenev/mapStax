@@ -58,9 +58,6 @@ public class MapServ extends HttpServlet {
 
     private void GetmapData(String user, String uuid, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String returnData;
-        //String returnId = null;
-        //Convertors convertor = new Convertors();
-        //java.util.UUID returnId;// = convertor.getTimeUUID(); 
         MapModel aMap = new MapModel();
         aMap.setCluster(cluster);
         //java.util.LinkedList<Map> mapsList = (java.util.LinkedList<Map>) request.getAttribute("maps");
@@ -74,8 +71,6 @@ public class MapServ extends HttpServlet {
             }
         }
         RequestDispatcher rd = request.getRequestDispatcher("/map.jsp");
-        //request.setAttribute("mapid", returnId);
-        //request.setAttribute("mapdata", returnData);
         rd.forward(request, response);
 
     }
