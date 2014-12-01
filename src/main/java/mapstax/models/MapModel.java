@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.dundee.computing.aec.instagrim.models;
+package mapstax.models;
 
 import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.Cluster;
@@ -13,8 +13,8 @@ import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 import java.util.Date;
 import java.util.UUID;
-import uk.ac.dundee.computing.aec.instagrim.stores.Map;
-import uk.ac.dundee.computing.aec.mapStax.lib.Convertors;
+import mapstax.stores.Map;
+import mapstax.lib.Convertors;
 
 /**
  *

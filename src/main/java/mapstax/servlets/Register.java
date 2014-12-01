@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.dundee.computing.aec.instagrim.servlets;
+package mapstax.servlets;
 
 import com.datastax.driver.core.Cluster;
 import java.io.IOException;
@@ -16,8 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import uk.ac.dundee.computing.aec.mapStax.lib.CassandraHosts;
-import uk.ac.dundee.computing.aec.mapStax.models.User;
+import mapstax.lib.CassandraHosts;
+import mapstax.models.User;
 
 
 

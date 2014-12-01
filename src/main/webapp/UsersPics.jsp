@@ -4,11 +4,11 @@
     Author     : Administrator
 --%>
 
-<%@page import="uk.ac.dundee.computing.aec.mapStax.models.User"%>
-<%@page import="uk.ac.dundee.computing.aec.mapStax.servlets.Profile"%>
+<%@page import="mapstax.models.User"%>
+<%@page import="mapstax.servlets.Profile"%>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="uk.ac.dundee.computing.aec.mapStax.stores.*" %>
+<%@ page import="mapstax.stores.*" %>
 <!DOCTYPE html>
 <html>
     <head>

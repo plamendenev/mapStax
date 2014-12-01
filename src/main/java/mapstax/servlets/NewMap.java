@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import uk.ac.dundee.computing.aec.instagrim.models.MapModel;
-import uk.ac.dundee.computing.aec.mapStax.lib.CassandraHosts;
-import uk.ac.dundee.computing.aec.mapStax.stores.LoggedIn;
+import mapstax.models.MapModel;
+import mapstax.lib.CassandraHosts;
+import mapstax.stores.LoggedIn;
 /**
  *
  * @author Naiyon
@@ -72,7 +72,7 @@ public class NewMap extends HttpServlet {
         //String mapText = request.getParameter("mySavedModel");
         String mapText = "{ \"class\": \"go.TreeModel\",\n"
                 + "  \"nodeDataArray\": [ \n"
-                + "{\"key\":0, \"text\":\" "+mapName+" \", \"loc\":\"0 0\"},\n"
+                + "{\"key\":0, \"text\":\""+mapName+"\", \"loc\":\"0 0\"},\n"
                 + "{\"key\":1, \"parent\":0, \"text\":\"Getting more time\", \"brush\":\"skyblue\", \"dir\":\"right\", \"loc\":\"77 -22\"},\n"
                 + "{\"key\":2, \"parent\":0, \"text\":\"More effective use\", \"brush\":\"darkseagreen\", \"dir\":\"right\", \"loc\":\"77 43\"},\n"
                 + "{\"key\":4, \"parent\":0, \"text\":\"Key issues\", \"brush\":\"coral\", \"dir\":\"left\", \"loc\":\"-20 52.75\"}\n"

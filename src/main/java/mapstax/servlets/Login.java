@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.dundee.computing.aec.mapStax.servlets;
+package mapstax.servlets;
 
 import com.datastax.driver.core.Cluster;
 import java.io.IOException;
@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import uk.ac.dundee.computing.aec.mapStax.lib.CassandraHosts;
-import uk.ac.dundee.computing.aec.mapStax.models.User;
-import uk.ac.dundee.computing.aec.mapStax.stores.LoggedIn;
+import mapstax.lib.CassandraHosts;
+import mapstax.models.User;
+import mapstax.stores.LoggedIn;
 
 /**
  *
@@ -60,9 +60,6 @@ public class Login extends HttpServlet {
             if (isValid != null) {
                 isValid.setLogedin();
                 session.setAttribute("LoggedIn", isValid);
-                //RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
-                //rd.forward(request, response);
-                //response.sendRedirect("/mapStax/index.jsp");
                 response.sendRedirect("/mapStax/index.jsp");
                 return;
             }

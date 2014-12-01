@@ -4,7 +4,7 @@
     Author     : Administrator
 --%>
 
-<%@ page import="uk.ac.dundee.computing.aec.mapStax.stores.*" %>
+<%@ page import="mapstax.stores.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

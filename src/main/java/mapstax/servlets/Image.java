@@ -1,4 +1,4 @@
-package uk.ac.dundee.computing.aec.mapStax.servlets;
+package mapstax.servlets;
 
 import com.datastax.driver.core.Cluster;
 import java.io.BufferedInputStream;
@@ -22,11 +22,11 @@ import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
-import uk.ac.dundee.computing.aec.mapStax.lib.CassandraHosts;
-import uk.ac.dundee.computing.aec.mapStax.lib.Convertors;
-import uk.ac.dundee.computing.aec.mapStax.models.PicModel;
-import uk.ac.dundee.computing.aec.mapStax.stores.LoggedIn;
-import uk.ac.dundee.computing.aec.mapStax.stores.Pic;
+import mapstax.lib.CassandraHosts;
+import mapstax.lib.Convertors;
+import mapstax.models.PicModel;
+import mapstax.stores.LoggedIn;
+import mapstax.stores.Pic;
 
 /**
  * Servlet implementation class Image

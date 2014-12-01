@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="uk.ac.dundee.computing.aec.mapStax.stores.*" %>
+<%@page import="mapstax.stores.*" %>
 <!DOCTYPE html>
 <html>
     <head>

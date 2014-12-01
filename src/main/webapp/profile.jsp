@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.util.*"%>
-<%@ page import="uk.ac.dundee.computing.aec.instagrim.stores.*" %>
+<%@ page import="mapstax.stores.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

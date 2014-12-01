@@ -1,4 +1,4 @@
-package uk.ac.dundee.computing.aec.mapStax.lib;
+package mapstax.lib;
 
 import com.datastax.driver.core.*;
 

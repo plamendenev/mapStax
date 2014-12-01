@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.dundee.computing.aec.mapStax.models;
+package mapstax.models;
 
 import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.Cluster;
@@ -15,8 +15,8 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Set;
 import java.util.UUID;
-import uk.ac.dundee.computing.aec.mapStax.lib.AeSimpleSHA1;
-import uk.ac.dundee.computing.aec.mapStax.stores.LoggedIn;
+import mapstax.lib.AeSimpleSHA1;
+import mapstax.stores.LoggedIn;
 
 /**
  *
@@ -100,7 +100,6 @@ public class User {
     
     public boolean UpdateUser(String name, String surname, Set<String> email, String Password, String username) {
         AeSimpleSHA1 sha1handler = new AeSimpleSHA1();
-        //LoggedIn lg = new LoggedIn();
         String EncodedPassword = null;
         try {
             EncodedPassword = sha1handler.SHA1(Password);
@@ -112,9 +111,7 @@ public class User {
         PreparedStatement ps = session.prepare("UPDATE userprofiles SET first_name=?, last_name=?, email=?, password=? WHERE login=?");
 
         BoundStatement boundStatement = new BoundStatement(ps);
-        //String username = lg.getUser().getUsername();
         session.execute(boundStatement.bind(name, surname, email, EncodedPassword, username));
-        //We are assuming this always works.  Also a transaction would be good here !        
         return true;
     }
 

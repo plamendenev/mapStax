@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.dundee.computing.aec.instagrim.servlets;
+package mapstax.servlets;
 
 import com.datastax.driver.core.Cluster;
 import java.io.IOException;
@@ -18,12 +18,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import uk.ac.dundee.computing.aec.instagrim.models.MapModel;
-import uk.ac.dundee.computing.aec.instagrim.stores.Map;
-import uk.ac.dundee.computing.aec.mapStax.lib.CassandraHosts;
-import uk.ac.dundee.computing.aec.mapStax.lib.Convertors;
-import uk.ac.dundee.computing.aec.mapStax.models.User;
-import uk.ac.dundee.computing.aec.mapStax.stores.LoggedIn;
+import mapstax.models.MapModel;
+import mapstax.stores.Map;
+import mapstax.lib.CassandraHosts;
+import mapstax.lib.Convertors;
+import mapstax.models.User;
+import mapstax.stores.LoggedIn;
 
 /**
  *
@@ -161,12 +161,10 @@ public class MapServ extends HttpServlet {
         User us = new User();
         
         us.setCluster(CassandraHosts.getCluster());
-        //Convertors convertor = new Convertors();
-        java.util.UUID uuid;// = convertor.getTimeUUID(); 
+        java.util.UUID uuid;
         
         uuid = (UUID) request.getAttribute("mapid");
         String mapStuff = request.getParameter("mySavedModel");
-        //String mapStuff = request.getParameter("mapdata");
         
         MapModel aMap = new MapModel();
         
@@ -174,11 +172,9 @@ public class MapServ extends HttpServlet {
         
         aMap.updateMap(returnId, mapStuff);
         request.setAttribute("mapdata", mapStuff);
-        RequestDispatcher rd = request.getRequestDispatcher("/map.jsp");
-        //request.setAttribute("mapdata", request.getParameter("mySavedModel"));
-        //request.setAttribute("mapdata", mapStuff);
-        rd.forward(request, response);
-        //response.sendRedirect("/mapStax/map.jsp");
+        //RequestDispatcher rd = request.getRequestDispatcher("/map.jsp");
+        //rd.forward(request, response);
+        response.sendRedirect("/mapStax/map.jsp");
     }
 
     private void error(String mess, HttpServletResponse response) throws ServletException, IOException {

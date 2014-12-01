@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.util.Iterator"%>
-<%@page import="uk.ac.dundee.computing.aec.instagrim.stores.Map"%>
+<%@page import="mapstax.stores.Map"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,18 +31,19 @@
             <%
             } else {
                 /*Iterator<Map> iterator;
-                iterator = mapsList.iterator();
-                while (iterator.hasNext()) {
-                    Map map = (Map) iterator.next();*/
-                    
-                    for(int i = 0; i< mapsList.size(); i++){
-            %>
-            <a href="DisplayMap/<%=mapsList.get(i).getUUID()%>"><% out.println(mapsList.get(i).getMapName());%></a></br>           
-            <%
-                    }
-                }
-                
-            %>            
+                 iterator = mapsList.iterator();
+                 while (iterator.hasNext()) {
+                 Map map = (Map) iterator.next();*/
+            %><ul><%
+                        for (int i = 0; i < mapsList.size(); i++) {
+                %>
+                <li><a href="DisplayMap/<%=mapsList.get(i).getUUID()%>"><% out.println(mapsList.get(i).getMapName());%></a></li>           
+                    <%
+                        }
+                    %></ul><%
+                                }
+
+                %>            
         </article>    
     </body>
 </html>

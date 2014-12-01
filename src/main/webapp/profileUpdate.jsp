@@ -4,7 +4,7 @@
     Author     : plamendenev
 --%>
 
-<%@page import="uk.ac.dundee.computing.aec.mapStax.stores.LoggedIn"%>
+<%@page import="mapstax.stores.LoggedIn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
