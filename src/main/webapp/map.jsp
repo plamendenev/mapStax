@@ -9,10 +9,7 @@
 <%@page import="mapstax.stores.LoggedIn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Mind Map</title>
-        <!-- Copyright 1998-2014 by Northwoods Software Corporation. -->       
+<html>      
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>mapStax</title>
@@ -21,16 +18,18 @@
     <body>
         <header>
 
-            <h1>mapStax ! </h1>
-            <h2>Your world in Black and White</h2>
+            <h1>mapStax !</h1>
+            <h2>Your mind mapping world</h2>
         </header>       
         <ul>
-            <li><a href="/mapStax/index.jsp">Home</a></li>
-            <li><a href="/mapStax/upload.jsp">Upload</a></li>                
+            <li><a href="/mapStax/index.jsp">Home</a></li>               
             <li><a href="/mapStax/profile.jsp">Profile</a></li>
             <li><a href="/mapStax/MapServ">Maps</a></li>
         </ul>
-        <script src="go-debug.js"></script>
+        <form method="POST" action="/mapStax/DeleteMap/<%=request.getAttribute("mapid")%>">            
+            <input type="submit" value="Delete map">
+        </form>
+        <script src="/mapStax/go-debug.js"></script>
         <script id="code">
             function init() {
                 if (window.goSamples)
@@ -305,16 +304,15 @@
     </head>
 <body onload="init()">
     <div id="sample">
-        <div id="myDiagram" style="border: solid 1px blue; width:100%; height:300px;"></div>
+        <div id="myDiagram" style="border: solid 1px blue; width:100%; height:400px;"></div>
         
-        <button id="SaveButton" onclick="save()">Save</button>
-        <button onclick="load()">Load</button>
+        <!--<button id="SaveButton" onclick="save()">Save</button>
+        <button onclick="load()">Load</button>-->
         <button onclick="layoutAll()">Layout</button>
         
         <form method="POST" action="MapServ/<%=request.getAttribute("mapid")%>">
-            <textarea name="mySavedModel" id="mySavedModel" style="width:100%;height:150px"><%=request.getAttribute("mapdata")%></textarea>
-            </br>
-            <input type="submit" value="Save to db">
+            <textarea name="mySavedModel" id="mySavedModel" style="width:100%;height:0px"><%=request.getAttribute("mapdata")%></textarea>
+            <input type="submit" value="Save" id="SaveButton" onclick="save()">
         </form> 
     </div>
 </body>
