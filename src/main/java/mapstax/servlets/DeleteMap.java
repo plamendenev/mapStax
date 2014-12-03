@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import mapstax.lib.CassandraHosts;
 import mapstax.models.MapModel;
 import mapstax.models.User;
+import mapstax.stores.LoggedIn;
 import mapstax.stores.Map;
 
 /**
@@ -91,6 +92,9 @@ public class DeleteMap extends HttpServlet {
         MapModel aMap = new MapModel();
         aMap.setCluster(cluster);              
         aMap.DeleteMap(mapId);
+        LoggedIn lg = (LoggedIn) request.getSession().getAttribute("LoggedIn");
+        String user = lg.getUser().getUsername();
+        aMap.getMapsForUser(user);
         
         RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
         rd.forward(request, response);

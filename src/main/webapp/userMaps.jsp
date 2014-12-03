@@ -23,7 +23,7 @@
             <h1>Your maps</h1>
             <h3><a href="newMap.jsp">Create a new map</a></h3>
             <%
-                java.util.LinkedList<Map> mapsList = (java.util.LinkedList<Map>) request.getAttribute("maps");
+                java.util.LinkedList<Map> mapsList = (java.util.LinkedList<Map>) request.getSession().getAttribute("maps");
                 if (mapsList == null) {
             %>
             <p>No maps found</p>

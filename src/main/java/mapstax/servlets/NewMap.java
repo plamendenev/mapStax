@@ -74,12 +74,11 @@ public class NewMap extends HttpServlet {
                 + "{\"key\":1, \"parent\":0, \"text\":\"Getting more time\", \"brush\":\"skyblue\", \"dir\":\"right\", \"loc\":\"77 -22\"},\n"
                 + "{\"key\":2, \"parent\":0, \"text\":\"More effective use\", \"brush\":\"darkseagreen\", \"dir\":\"right\", \"loc\":\"77 43\"},\n"
                 + "{\"key\":4, \"parent\":0, \"text\":\"Key issues\", \"brush\":\"coral\", \"dir\":\"left\", \"loc\":\"-20 52.75\"}\n"
-                + " ]}";
-        if (mapName != null) {
-            MapModel map = new MapModel();
-            map.setCluster(cluster);
-            map.insertMap(user, mapName, mapText);
-        }
+                + " ]}";        
+        MapModel map = new MapModel();
+        map.setCluster(cluster);
+        map.insertMap(user, mapName, mapText);
+        map.getMapsForUser(user);        
 
         RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
         rd.forward(request, response);

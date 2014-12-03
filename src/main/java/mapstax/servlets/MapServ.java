@@ -51,17 +51,17 @@ public class MapServ extends HttpServlet {
         aMap.setCluster(cluster);
         java.util.LinkedList<Map> mapsList = aMap.getMapsForUser(user);
         RequestDispatcher rd = request.getRequestDispatcher("/userMaps.jsp");
-        request.setAttribute("maps", mapsList);
+        request.getSession().setAttribute("maps", mapsList);
         rd.forward(request, response);
     }
 
-    private void GetmapData(String user, String uuid, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void GetmapData(String uuid, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String returnData;
         MapModel aMap = new MapModel();
         aMap.setCluster(cluster);
-        java.util.UUID returnId;
-        //java.util.LinkedList<Map> mapsList = (java.util.LinkedList<Map>) request.getAttribute("maps");
-        java.util.LinkedList<Map> mapsList = aMap.getMapsForUser(user);
+        java.util.UUID returnId; 
+        java.util.LinkedList<Map> mapsList = (java.util.LinkedList<Map>) request.getSession().getAttribute("maps");
+        
         for (int i = 0; i < mapsList.size(); i++) {
             if (mapsList.get(i).getUUID().toString().equals(uuid)) {
                 returnData = mapsList.get(i).getMapText();
@@ -131,7 +131,7 @@ public class MapServ extends HttpServlet {
                 DisplayMapsList(user, request, response);
                 break;
             case 2:
-                GetmapData(user, args[2], request, response);
+                GetmapData(args[2], request, response);
                 break;
             default:
                 error("Bad Operator", response);
@@ -163,7 +163,7 @@ public class MapServ extends HttpServlet {
         
         request.setAttribute("mapdata", mapStuff);
         RequestDispatcher rd = request.getRequestDispatcher("/map.jsp");
-        rd.forward(request, response);
+        rd.forward(request, response); 
     }
 
     private void error(String mess, HttpServletResponse response) throws ServletException, IOException {
