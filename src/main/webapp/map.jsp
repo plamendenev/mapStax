@@ -26,9 +26,6 @@
             <li><a href="/mapStax/profile.jsp">Profile</a></li>
             <li><a href="/mapStax/MapServ">Maps</a></li>
         </ul>
-        <form method="POST" action="/mapStax/DeleteMap/<%=request.getAttribute("mapid")%>">            
-            <input type="submit" value="Delete map">
-        </form>
         <script src="/mapStax/go-debug.js"></script>
         <script id="code">
             function init() {
