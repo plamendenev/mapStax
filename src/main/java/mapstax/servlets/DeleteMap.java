@@ -86,9 +86,8 @@ public class DeleteMap extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);      
-        java.util.UUID mapId= MapServ.returnId;
-        //java.util.UUID mapId = (java.util.UUID) request.getAttribute("mapid");            
+        //processRequest(request, response); 
+        java.util.UUID mapId = (java.util.UUID) request.getSession().getAttribute("mapid");            
         MapModel aMap = new MapModel();
         aMap.setCluster(cluster);              
         aMap.DeleteMap(mapId);

@@ -33,14 +33,12 @@ import mapstax.stores.LoggedIn;
 public class MapServ extends HttpServlet {
 
     private Cluster cluster = null;
-    private HashMap CommandsMap = new HashMap();
-    public static java.util.UUID returnId;
+    private HashMap CommandsMap = new HashMap();    
 
     public MapServ() {
         super();
         CommandsMap.put("MapServ", 1);
         CommandsMap.put("DisplayMap", 2);
-        CommandsMap.put("DeleteMap", 3);
     }
 
     public void init(ServletConfig config) throws ServletException {
@@ -61,6 +59,7 @@ public class MapServ extends HttpServlet {
         String returnData;
         MapModel aMap = new MapModel();
         aMap.setCluster(cluster);
+        java.util.UUID returnId;
         //java.util.LinkedList<Map> mapsList = (java.util.LinkedList<Map>) request.getAttribute("maps");
         java.util.LinkedList<Map> mapsList = aMap.getMapsForUser(user);
         for (int i = 0; i < mapsList.size(); i++) {
@@ -68,7 +67,7 @@ public class MapServ extends HttpServlet {
                 returnData = mapsList.get(i).getMapText();
                 request.setAttribute("mapdata", returnData);
                 returnId = mapsList.get(i).getUUID();
-                request.setAttribute("mapid", returnId);                
+                request.getSession().setAttribute("mapid", returnId);                
             }
         }
         RequestDispatcher rd = request.getRequestDispatcher("/map.jsp");
@@ -155,8 +154,13 @@ public class MapServ extends HttpServlet {
         us.setCluster(CassandraHosts.getCluster());
         String mapStuff = request.getParameter("mySavedModel");        
         MapModel aMap = new MapModel();        
-        aMap.setCluster(cluster);        
-        aMap.updateMap(returnId, mapStuff);
+        aMap.setCluster(cluster);   
+        
+        //Object temp =   request.getSession().getAttribute("mapid");
+        java.util.UUID mapId = (java.util.UUID) request.getSession().getAttribute("mapid");        
+        
+        aMap.updateMap(mapId, mapStuff);
+        
         request.setAttribute("mapdata", mapStuff);
         RequestDispatcher rd = request.getRequestDispatcher("/map.jsp");
         rd.forward(request, response);
