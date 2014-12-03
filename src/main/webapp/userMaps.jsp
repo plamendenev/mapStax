@@ -16,8 +16,7 @@
     </head>
     <body>
         <ul>
-            <li><a href="/mapStax/index.jsp">Home</a></li>
-            <li><a href="/mapStax/upload.jsp">Upload</a></li>                
+            <li><a href="/mapStax/index.jsp">Home</a></li>             
             <li><a href="/mapStax/profile.jsp">Profile</a></li>
         </ul>
         <article>
@@ -37,7 +36,9 @@
             %><ul><%
                         for (int i = 0; i < mapsList.size(); i++) {
                 %>
-                <li><a href="DisplayMap/<%=mapsList.get(i).getUUID()%>"><% out.println(mapsList.get(i).getMapName());%></a></li>           
+                <li><a href="DisplayMap/<%=mapsList.get(i).getUUID()%>"><%out.println(mapsList.get(i).getMapName());%></a>
+                    created on <%out.println(mapsList.get(i).getDate());%>
+                </li>           
                     <%
                         }
                     %></ul><%

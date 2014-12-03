@@ -25,9 +25,9 @@
                     if (lg.getlogedin()) {
             %>
             <h2>Hello, <%=lg.getUser().getName()%>!</h2>
-            <li><a href="profile.jsp">Profile</a></li>
-            <li><a href="/mapStax/Images/<%=lg.getUser().getUsername()%>">Images</a></li>            
             <li><a href="/mapStax/MapServ">Maps</a></li>
+            <li><a href="profile.jsp">Profile</a></li>
+            <li><a href="/mapStax/Images/<%=lg.getUser().getUsername()%>">Images</a></li>
             <li><a href="logout.jsp">Logout</a></li>
                 <%}
                 } else {

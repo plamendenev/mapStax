@@ -67,9 +67,7 @@ public class NewMap extends HttpServlet {
         LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
         String user = lg.getUser().getUsername();
         
-        //String user = request.getParameter("username");
         String mapName = request.getParameter("mapName");
-        //String mapText = request.getParameter("mySavedModel");
         String mapText = "{ \"class\": \"go.TreeModel\",\n"
                 + "  \"nodeDataArray\": [ \n"
                 + "{\"key\":0, \"text\":\""+mapName+"\", \"loc\":\"0 0\"},\n"

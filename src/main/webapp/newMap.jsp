@@ -32,7 +32,7 @@
         <h3>Creating a new mind map</h3>
 
         <form method="POST" action="NewMap"> 
-            <p>Please enter a map name: <input type = "text" name="mapName"></p> 
+            <p>Please enter a map name: <input type = "text" name="mapName" autofocus></p> 
             <input type="submit" value="Create">
         </form>
         <%}

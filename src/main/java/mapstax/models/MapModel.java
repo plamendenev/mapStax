@@ -27,7 +27,7 @@ public class MapModel {
     public java.util.LinkedList<Map> getMapsForUser(String user) {
         java.util.LinkedList<Map> maps = new java.util.LinkedList<>();
         Session session = cluster.connect("mapStax");
-        PreparedStatement ps = session.prepare("SELECT mapid, mapname, mapinfo FROM maps WHERE user =? ALLOW FILTERING");
+        PreparedStatement ps = session.prepare("SELECT * FROM maps WHERE user =?");
         ResultSet rs = null;
         BoundStatement boundStatement = new BoundStatement(ps);
         rs = session.execute(boundStatement.bind(user));
@@ -37,12 +37,13 @@ public class MapModel {
             java.util.UUID UUID = row.getUUID("mapid");
             String mapName = row.getString("mapname");
             String mapText = row.getString("mapinfo");
+            Date mapDate = row.getDate("dateadded");
             aMap.setUUID(UUID);
             aMap.setMapName(mapName);
             aMap.SetMapText(mapText);
+            aMap.setDate(mapDate);
             maps.add(aMap);
         }
-
         return maps;
     }
 
@@ -92,6 +93,16 @@ public class MapModel {
         boundStatement.bind(mapStuff, mapId);
         session.execute(boundStatement);
 
+        session.close();
+    }
+    
+    public void DeleteMap(UUID mapId)
+    {
+        Session session = cluster.connect("mapStax");
+        PreparedStatement ps = session.prepare("DELETE FROM maps WHERE mapid=?");
+        BoundStatement bndSt = new BoundStatement(ps);
+        bndSt.bind(mapId);
+        session.execute(bndSt);
         session.close();
     }
 

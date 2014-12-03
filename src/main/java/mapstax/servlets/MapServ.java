@@ -34,12 +34,13 @@ public class MapServ extends HttpServlet {
 
     private Cluster cluster = null;
     private HashMap CommandsMap = new HashMap();
-    java.util.UUID returnId;
+    public static java.util.UUID returnId;
 
     public MapServ() {
         super();
         CommandsMap.put("MapServ", 1);
         CommandsMap.put("DisplayMap", 2);
+        CommandsMap.put("DeleteMap", 3);
     }
 
     public void init(ServletConfig config) throws ServletException {
@@ -136,7 +137,6 @@ public class MapServ extends HttpServlet {
             default:
                 error("Bad Operator", response);
         }
-
     }
 
     /**
@@ -150,25 +150,16 @@ public class MapServ extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        HttpSession session = request.getSession();
-        LoggedIn lg = (LoggedIn) session.getAttribute("LoggedIn");
-        User us = new User();
-        
+        //processRequest(request, response); 
+        User us = new User();        
         us.setCluster(CassandraHosts.getCluster());
-        java.util.UUID uuid;        
-        uuid = (UUID) request.getAttribute("mapid");
-        String mapStuff = request.getParameter("mySavedModel");
-        
-        MapModel aMap = new MapModel();
-        
-        aMap.setCluster(cluster);
-        
+        String mapStuff = request.getParameter("mySavedModel");        
+        MapModel aMap = new MapModel();        
+        aMap.setCluster(cluster);        
         aMap.updateMap(returnId, mapStuff);
         request.setAttribute("mapdata", mapStuff);
         RequestDispatcher rd = request.getRequestDispatcher("/map.jsp");
         rd.forward(request, response);
-        //response.sendRedirect("/mapStax/map.jsp");
     }
 
     private void error(String mess, HttpServletResponse response) throws ServletException, IOException {

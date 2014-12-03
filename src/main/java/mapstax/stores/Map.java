@@ -6,6 +6,8 @@
 
 package mapstax.stores;
 
+import java.util.Date;
+
 /**
  *
  * @author plamendenev
@@ -15,7 +17,16 @@ public class Map {
     private String mapName;
     private String mapText;
     private java.util.UUID mapId = null;
+    private Date dateCreated;
     
+    public void setDate(Date aDate)
+    {
+        dateCreated = aDate;
+    }
+    public Date getDate()
+    {
+        return dateCreated;
+    }
     public void setMapName(String mapName)
     {
         this.mapName = mapName;
